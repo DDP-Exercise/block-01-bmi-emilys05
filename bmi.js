@@ -29,7 +29,7 @@
  */
 
 const LINE = "-----------------------------------------------------";
-let bmr, bmi, normal, danger;
+//had to put those away since it didn't like that I had them twice.
 
 /**
  * Formulas:
@@ -73,7 +73,57 @@ let bmr, bmi, normal, danger;
 
 console.log(LINE); // Logs the dashed-line.
 
+let lastName = prompt("Enter your last name:").toUpperCase();
+let firstName = prompt("Enter your first name:");
+firstName = firstName[0].toUpperCase() + firstName.slice(1);  //i had to look this one up
+let age = Number(prompt("Enter your age in full years:"));
+let height =Number(prompt("Enter your height in cm:"));
+let weight = Number(prompt("Enter your weight in full kg:"));
+let gender = prompt("Enter your gender 'male' or 'female':").toLowerCase();
+while (gender !== "male" && gender !== "female") {
+    gender = prompt("Enter your gender or 'male' or 'female'").toLowerCase();
+}
+
+let bmr;
+if (gender === "female") {
+    bmr = 655 + 10 * weight + 2 * height - 6 * age;
+} else {
+    bmr = 66 + 14 * weight + 5 * height - 7 * age;
+}
+
+let bmi = ((10000 * weight) / (height*height));
+
+let normal;
+if (bmi >=18 && bmi <=25) {
+    normal = "Yes";
+} else {
+    normal = "No";
+}
+
+let danger;
+if (bmi < 16 || bmi >= 30) {
+    danger = "Yes";
+} else {
+    danger = "No";
+}
+let heightinm = height / 100;
+
+
+
+console.log("Name:\t\t\t\t\t\t\t\t" + lastName +", " + firstName);
+console.log(LINE);
+console.log("Age:\t\t\t\t\t\t\t\t" + age + " Years");
+console.log("Height:\t\t\t\t\t\t\t" + heightinm + " m");
+console.log("Weight:\t\t\t\t\t\t\t" + weight + " kg");
+console.log("Basal Metabolic Rate:\t" + bmr + " kcal");
+console.log("Body Mass Index:\t\t\t" + bmi);
+console.log("Normal Weight:\t\t\t\t" + normal);
+console.log("Danger:\t\t\t\t\t\t\t" + danger);
+console.log(LINE);
+
+
 /*
  * TODO: Make sure to TEST YOUR SOFTWARE! Does it work, when People are smaller than 1 meter? Or taller than 2?
  * Tip: An 18-Year old Woman, sized 160cm with 60 kg should have a BMR of 1467 kcal and a BMI of 23.4375.
  */
+
